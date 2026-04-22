@@ -1,0 +1,19 @@
+{
+  "name": "fullstack-test-suite-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-agent MCP framework for automated test generation from Figma designs and Swagger specs",
+  "workspaces": [
+    "packages/shared",
+    "packages/swagger-parser",
+    "packages/karate-generator"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "clean": "rimraf packages/*/dist"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}

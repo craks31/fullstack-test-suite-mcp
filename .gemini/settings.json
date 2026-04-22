@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "swagger-parser": {
+      "command": "node",
+      "args": ["packages/swagger-parser/dist/index.js"],
+      "cwd": "."
+    },
+    "karate-generator": {
+      "command": "node",
+      "args": ["packages/karate-generator/dist/index.js"],
+      "cwd": "."
+    }
+  }
+}
