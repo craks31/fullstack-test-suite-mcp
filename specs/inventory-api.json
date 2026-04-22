@@ -1,0 +1,48 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Inventory Management",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/stock/{sku}": {
+      "get": {
+        "security": [
+          { "ApiKeyAuth": [] }
+        ],
+        "parameters": [
+          {
+            "name": "sku",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Inventory level",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY"
+      }
+    }
+  }
+}

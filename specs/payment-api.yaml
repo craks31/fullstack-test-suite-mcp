@@ -1,0 +1,58 @@
+openapi: 3.0.1
+info:
+  title: Payment Gateway API
+  version: v1
+servers:
+  - url: https://api.payments.com/v1
+paths:
+  /charges:
+    post:
+      tags:
+        - payments
+      summary: Create a charge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChargeRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChargeResponse'
+components:
+  schemas:
+    ChargeRequest:
+      type: object
+      required:
+        - amount
+        - currency
+        - source
+      properties:
+        amount:
+          type: integer
+          minimum: 100
+        currency:
+          type: string
+          enum: [usd, eur, gbp]
+        source:
+          type: string
+        metadata:
+          type: object
+          properties:
+            order_id:
+              type: string
+            customer_note:
+              type: string
+    ChargeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+        receipt_url:
+          type: string
+          format: uri
